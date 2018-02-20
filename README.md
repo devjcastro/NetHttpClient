@@ -14,3 +14,47 @@ Right click on the project
 Search package and install
 > devjc.nethttpclient
 <img src="https://image.prntscr.com/image/DoGHcnpZRgKFPH0gwmRj3w.png" width="700" alt="Search Package">
+
+
+
+## Usage
+We can set NetHttpClient to work with Http verbs GET, POST, PUT and DELETE
+
+* HttpPost()
+* HttpGet()
+* HttpPut()
+* HttpDelete()
+
+**When calling the service, the expected response object must be specified**
+
+```
+Http.NetHttpClient clientRest = Http.NetHttpClient.Builder()
+    .BaseAddress("http://localhost:5000/")
+    .Requesturi("api/v1/Auth/test/post")
+    .HttpPost()
+    .Build();
+
+var auth = clientRest.ConsumeAsync<UserDto>().Result;
+```
+
+### Using Callback
+
+```
+Http.NetHttpClient clientRest = Http.NetHttpClient.Builder()
+    .FullUrl("http://localhost:5000/api/v1/Auth/test/requireAuthorization")
+    .HttpPost()
+    .OnSuccessEvent((HttpResponseDTO<object> response) => {
+        var data = response.Body;
+    })
+    .OnFailureEvent(delegate (HttpResponseDTO<object> response) {
+        string errorMessage = response.Message;
+        // Error code here
+    })
+    .Build();
+
+clientRest.Call<List<UserDto>>();
+```
+
+
+## Author
+* **Jorge Luis Castro Medina - Software Developer**
