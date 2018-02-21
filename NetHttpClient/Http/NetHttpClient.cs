@@ -30,6 +30,7 @@ namespace NetHttpClient.Http
         public HttpContent HttpContent { get; set; }
         public OnResponseEvent OnResponse { get; set; }
         public OnFailureEvent OnFailure { get; set; }
+        public HttpMessageHandler Handler { get; set; }
         #endregion
 
 
@@ -56,6 +57,7 @@ namespace NetHttpClient.Http
             Timeout = builder._timeout;
             OnResponse = builder._onResponseEvent;
             OnFailure = builder._onFailureEvent;
+            Handler = builder._handler;
         }
 
 
@@ -72,10 +74,11 @@ namespace NetHttpClient.Http
 
         private void ConfigureHttpClient()
         {
-            //var checkTokenHandler = new CheckTokenHandler();
-            //ch1.InnerHandler = new CustomHandler2();
+            if (Handler != null)
+                HttpClient = new HttpClient(Handler);
+            else
+                HttpClient = new HttpClient();
 
-            HttpClient = new HttpClient();
 
             if (BaseAddress != null)
                 HttpClient.BaseAddress = new Uri(BaseAddress);

@@ -69,6 +69,7 @@ namespace NetHttpClient.Test
             Http.NetHttpClient clientRest3 = Http.NetHttpClient.Builder()
                 .FullUrl("http://localhost:5000/api/v1/Auth/test/requireAuthorization")
                 .HttpPost()
+                .Handler(new CheckTokenHandler())
                 .OnSuccessEvent((HttpResponseDTO<object> response) => {
                     var res = response.Body;
                 })

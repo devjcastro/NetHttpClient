@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using static NetHttpClient.Http.NetHttpClient;
 
 namespace NetHttpClient.Http
@@ -14,6 +15,7 @@ namespace NetHttpClient.Http
         public dynamic _payload;
         public OnResponseEvent _onResponseEvent;
         public OnFailureEvent _onFailureEvent;
+        public HttpMessageHandler _handler;
         #endregion
 
 
@@ -87,6 +89,12 @@ namespace NetHttpClient.Http
         public NetHttpClientBuilder OnFailureEvent(OnFailureEvent onFailureEvent)
         {
             _onFailureEvent = onFailureEvent;
+            return this;
+        }
+
+        public NetHttpClientBuilder Handler(HttpMessageHandler handler)
+        {
+            _handler = handler;
             return this;
         }
 

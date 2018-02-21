@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>NetHttpClient</Title>
+    <Authors>Jorge Luis Castro Medina</Authors>
+    <Company />
+    <Description>Cliente para el consumo de servicios HTTP</Description>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageTags>http httpclient rest service</PackageTags>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/ingyork/NetHttpClient</RepositoryUrl>
+    <PackageId>devjc.NetHttpClient</PackageId>
+    <Copyright>Copyright ©2018 Jorge Luis Castro Medina</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
