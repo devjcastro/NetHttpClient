@@ -56,5 +56,16 @@ clientRest.Call<List<UserDto>>();
 ```
 
 
+### Add custom Handler
+To establish a handler we must define a class that inherits from **HttpClientHandler** and pass it as a parameter to the **Handler** method
+```
+Http.NetHttpClient clientRest = Http.NetHttpClient.Builder()
+	.FullUrl("http://localhost:5000/api/v1/Auth/test/requireAuthorization")
+	.HttpPost()
+	.Handler(new CheckTokenHandler())
+	.Build();
+```
+
+
 ## Author
 * **Jorge Luis Castro Medina - Software Developer**
